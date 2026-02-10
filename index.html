@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Web Player</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Header / Toolbar */
+        .toolbar {
+            height: 50px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+
+        /* Split Screen Container */
+        .container {
+            display: flex;
+            height: calc(100vh - 50px);
+            width: 100%;
+        }
+
+        /* Left Side: Code Editor */
+        .editor-side {
+            width: 50%;
+            height: 100%;
+            background: #f4f4f4;
+            border-right: 2px solid #34495e;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+        }
+
+        /* Right Side: Result */
+        .result-side {
+            width: 50%;
+            height: 100%;
+            background: #1e1e1e;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .btn-run {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-run:hover {
+            background: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <span><strong>C++ Online Player</strong></span>
+        <button class="btn-run" onclick="refreshPlayer()">Reload Compiler</button>
+    </div>
+
+    <div class="container">
+        <div class="editor-side">
+<textarea id="cppCode">
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello C++!" << endl;
+    return 0;
+}
+</textarea>
+        </div>
+
+        <div class="result-side">
+            <iframe id="compiler" src="https://www.onlinegdb.com/online_c++_compiler"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function refreshPlayer() {
+            document.getElementById('compiler').src += '';
+        }
+    </script>
+
+</body>
+</html>
